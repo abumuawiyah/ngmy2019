@@ -3,9 +3,44 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "demo": {
-      "root": "",
-      "sourceRoot": "src",
+    "atomic-component": {
+      "root": "projects/atomic-component",
+      "sourceRoot": "projects/atomic-component/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/atomic-component/tsconfig.lib.json",
+            "project": "projects/atomic-component/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/atomic-component/src/test.ts",
+            "tsConfig": "projects/atomic-component/tsconfig.spec.json",
+            "karmaConfig": "projects/atomic-component/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/atomic-component/tsconfig.lib.json",
+              "projects/atomic-component/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "chat-app": {
+      "root": "projects/chat-app/",
+      "sourceRoot": "projects/chat-app/src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {},
@@ -13,26 +48,27 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/demo",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "outputPath": "dist/chat-app",
+            "index": "projects/chat-app/src/index.html",
+            "main": "projects/chat-app/src/main.ts",
+            "polyfills": "projects/chat-app/src/polyfills.ts",
+            "tsConfig": "projects/chat-app/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/chat-app/src/favicon.ico",
+              "projects/chat-app/src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "projects/chat-app/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "es5BrowserSupport": true
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "projects/chat-app/src/environments/environment.ts",
+                  "with": "projects/chat-app/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -43,58 +79,78 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "demo:build"
+            "browserTarget": "chat-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "demo:build:production"
+              "browserTarget": "chat-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "demo:build"
+            "browserTarget": "chat-app:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "styles.css"
-            ],
-            "scripts": [],
+            "main": "projects/chat-app/src/test.ts",
+            "polyfills": "projects/chat-app/src/polyfills.ts",
+            "tsConfig": "projects/chat-app/tsconfig.spec.json",
+            "karmaConfig": "projects/chat-app/karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ]
+              "projects/chat-app/src/favicon.ico",
+              "projects/chat-app/src/assets"
+            ],
+            "styles": [
+              "projects/chat-app/src/styles.css"
+            ],
+            "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "projects/chat-app/tsconfig.app.json",
+              "projects/chat-app/tsconfig.spec.json",
+              "projects/chat-app/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
           }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/chat-app/e2e/protractor.conf.js",
+            "devServerTarget": "chat-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "chat-app:serve:production"
+            }
+          }
         }
       }
     }
   },
-  "defaultProject": "demo"
+  "defaultProject": "chat-app"
 }
