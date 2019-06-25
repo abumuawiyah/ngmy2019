@@ -25,7 +25,7 @@ export class TabsComponent implements OnInit, AfterContentInit {
   public sheet: Sheet;
 
   ngOnInit() {
-    const { css, ...other } = this;
+    const { css } = this;
     this.sheet = getStyleSheet({
       tabs: {
         display: "flex",

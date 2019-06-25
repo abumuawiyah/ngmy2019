@@ -2,7 +2,6 @@ import {
   Component,
   ContentChildren,
   QueryList,
-  OnInit,
   HostBinding,
   Input,
   AfterContentInit

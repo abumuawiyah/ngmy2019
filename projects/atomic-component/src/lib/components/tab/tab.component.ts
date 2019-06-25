@@ -4,11 +4,7 @@ import {
   Output,
   EventEmitter,
   Input,
-  OnInit,
-  OnChanges,
-  SimpleChanges,
   HostBinding,
-  AfterContentInit,
   AfterContentChecked
 } from "@angular/core";
 import { Sheet, getStyleSheet } from "../../utils/sheet";

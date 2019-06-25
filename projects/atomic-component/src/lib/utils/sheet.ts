@@ -2,7 +2,7 @@ import jss from "jss";
 
 export interface Sheet {
   readonly classes: any;
-  readonly update: () => void;
+  readonly update: any;
 }
 
 export const getStyleSheet = styles => {
