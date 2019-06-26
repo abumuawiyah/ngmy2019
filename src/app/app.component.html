@@ -1,51 +1,21 @@
-<ThemeProvider>
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
+<h2>Here are some links to help you start: </h2>
+<ul>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
+  </li>
+</ul>
 
-  <h2>Breadcrumbs A</h2>
-  <Breadcrumbs>
-    <ng-template let-selectedItem="selectedItem">
-        <DIV>
-            <OL [css]="styleA.olStyle">
-              <LI [css]="styleA.liStyle">
-                <Box [css]="styleA.indicatorStyle">{{selectedItem.value}}</Box>
-              </LI>
-              <LI [css]="styleA.liStyle" [item]="{value: '1'}" breadcrumbItem><A href="javascript:void(0);">Link 1</A></LI>
-              <LI [css]="styleA.liStyle" [item]="{value: '2'}" breadcrumbItem><A href="javascript:void(0);">Link 2</A></LI>
-              <LI [css]="styleA.liStyle" [item]="{value: '3'}" breadcrumbItem><A href="javascript:void(0);">Link 3</A></LI>
-              <LI [css]="styleA.liStyle" [item]="{value: '4'}" breadcrumbItem><A href="javascript:void(0);">Link 4</A></LI>
-              <LI [css]="styleA.liStyle" [item]="{value: '5'}" breadcrumbItem>Link 5</LI>
-            </OL>
-          </DIV>
-    </ng-template>
-  </Breadcrumbs>
-
-  <h2>Breadcrumbs B</h2>
-  <Breadcrumbs>
-    <ng-template let-selectedItem="selectedItem">
-      <NAV [css]="styleB.navStyle">
-        <A href="" [css]="styleB.aStyle">Link 1</A>
-        <A href="" [css]="styleB.aStyle">Link 2</A>
-        <A href="" [css]="styleB.aStyle">Link 3</A>
-        <A href="" [css]="styleB.aStyle">Link 4</A>
-        <A href="" [css]="styleB.aStyle">Link 5</A>
-      </NAV>
-    </ng-template>
-  </Breadcrumbs>
-
-  <h2>Breadcrumbs C</h2>
-  <Breadcrumbs>
-    <ng-template let-selectedItem="selectedItem">
-      <NAV>
-        <OL [css]="styleC.olStyle">
-          <LI [css]="styleC.liStyle"><A href="#">Link 1</A></LI>
-          <LI [css]="styleC.liStyle"><A href="#">Link 2</A></LI>
-          <LI [css]="styleC.liStyle"><A href="#">Link 3</A></LI>
-          <LI [css]="styleC.liStyle"><A href="#">Link 4</A></LI>
-          <LI [css]="styleC.liStyle"><A href="#">Link 5</A></LI>
-        </OL>
-      </NAV>
-    </ng-template>
-  </Breadcrumbs>
-
-
-
-</ThemeProvider>
+<router-outlet></router-outlet>

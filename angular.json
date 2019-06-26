@@ -369,5 +369,5 @@
       }
     }
   },
-  "defaultProject": "my-app"
+  "defaultProject": "foo"
 }

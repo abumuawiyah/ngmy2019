@@ -1,18 +1,10 @@
-import { Component, OnInit } from "@angular/core";
-import { styleA, styleB, styleC } from "./app.component.styles";
+import { Component } from '@angular/core';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html"
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  public styleA: object;
-  public styleB: object;
-  public styleC: object;
-
-  public ngOnInit(): void {
-    this.styleA = styleA;
-    this.styleB = styleB;
-    this.styleC = styleC;
-  }
+export class AppComponent {
+  title = 'foo';
 }
