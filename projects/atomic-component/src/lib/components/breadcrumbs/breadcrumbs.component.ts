@@ -120,10 +120,10 @@ export const BREADCRUMBS_VALUE_ACCESSOR: any = {
   providers: [BREADCRUMBS_VALUE_ACCESSOR]
 })
 export class BreadcrumbsComponent implements AfterViewInit, OnDestroy {
-  @ContentChild(TemplateRef) template!: TemplateRef<any>;
-  @ContentChild(BreadcrumbListDirective)
+  @ContentChild(TemplateRef, {static: false}) template!: TemplateRef<any>;
+  @ContentChild(BreadcrumbListDirective, {static: false})
   breadcrumbList!: BreadcrumbListDirective;
-  @ContentChild(BreadcrumbItemDirective)
+  @ContentChild(BreadcrumbItemDirective, {static: false})
   breadcrumbItemDirective!: BreadcrumbItemDirective;
 
   state = new BehaviorSubject({ selectedItem: {} });
