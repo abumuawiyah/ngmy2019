@@ -2,7 +2,15 @@
   "name": "atomic-component",
   "version": "0.0.1",
   "peerDependencies": {
+<<<<<<< HEAD
     "@angular/common": "^8.0.3",
     "@angular/core": "^8.0.3"
+=======
+    "@angular/common": "^8.0.0-beta.11",
+    "@angular/core": "^8.0.0-beta.11",
+    "jss": "^9.8.7",
+    "jss-preset-default": "^4.5.0",
+    "frontal": "^3.0.1"
+>>>>>>> 691416ca17cb650ca7563220d03432cda5b0be56
   }
 }
