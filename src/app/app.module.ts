@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import jss from 'jss';
 import preset from 'jss-preset-default';
 
+import { AtomicComponentModule } from "projects/atomic-component/src/public-api";
+
 jss.setup(preset());
 
 @NgModule({
@@ -15,7 +17,8 @@ jss.setup(preset());
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AtomicComponentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
