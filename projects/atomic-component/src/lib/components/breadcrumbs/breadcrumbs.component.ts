@@ -39,6 +39,10 @@ export class BreadcrumbItemDirective
     fromEvent(this.element.nativeElement, "click")
       .pipe(takeUntil(this.destroy))
       .subscribe(_ => this.breadcrumbs.itemClick(this.item));
+
+    fromEvent(this.element.nativeElement, "mouseover")
+      .pipe(takeUntil(this.destroy))
+      .subscribe(_ => this.breadcrumbs.itemHover(this.item));
   }
 
   ngOnDestroy() {
@@ -69,14 +73,27 @@ export const BREADCRUMBS_VALUE_ACCESSOR: any = {
 export class BreadcrumbsComponent implements AfterViewInit, OnDestroy {
   @ContentChild(TemplateRef, { static: false }) template!: TemplateRef<any>;
 
-  state = new BehaviorSubject({ selectedItem: {} });
+  state = new BehaviorSubject({ selectedItem: {}, highlightedItem: {} });
 
   itemClick(item) {
-    this.state.next({ selectedItem: item });
+    this.state.next({
+      selectedItem: item,
+      highlightedItem: this.state.getValue().highlightedItem
+    });
+  }
+
+  itemHover(item) {
+    this.state.next({
+      highlightedItem: item,
+      selectedItem: this.state.getValue().selectedItem
+    });
   }
 
   ngAfterViewInit() {
-    this.state.next({ selectedItem: { value: "" } });
+    this.state.next({
+      selectedItem: { value: "" },
+      highlightedItem: { value: "" }
+    });
   }
 
   ngOnDestroy() {}

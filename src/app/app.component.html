@@ -2,14 +2,16 @@
 
   <Box [css]="{
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    flexDirection: 'column',
+    height: 300
   }">
     <Breadcrumbs>
-      <ng-template let-selectedItem="selectedItem">
+      <ng-template let-selectedItem="selectedItem" let-highlightedItem="highlightedItem">
           <DIV>
               <OL [css]="styleA.olStyle">
                 <LI [css]="styleA.liStyle">
-                  <Box [css]="styleA.indicatorStyle">{{selectedItem.value}}</Box>
+                  <Box [css]="styleA.indicatorStyle">{{highlightedItem.value}}</Box>
                 </LI>
                 <LI [css]="styleA.liStyle" [item]="{value: '1'}" breadcrumbItem><A href="javascript:void(0);">Link 1</A></LI>
                 <LI [css]="styleA.liStyle" [item]="{value: '2'}" breadcrumbItem><A href="javascript:void(0);">Link 2</A></LI>
