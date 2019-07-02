@@ -10,7 +10,6 @@ import { ChevronDownIconComponent } from "./svg/chevron-down-icon/chevron-down-i
 import { ChevronUpIconComponent } from "./svg/chevron-up-icon/chevron-up-icon.component";
 import {
   BreadcrumbsComponent,
-  BreadcrumbListDirective,
   BreadcrumbItemDirective
 } from "./components/breadcrumbs/breadcrumbs.component";
 import { OlComponent } from "./components/semantic/ol/ol.component";
@@ -20,7 +19,7 @@ import { AComponent } from "./components/semantic/a/a.component";
 import { DivComponent } from "./components/semantic/div/div.component";
 import { SvgComponent } from "./components/semantic/svg/svg.component";
 import { SettingIconComponent } from "./svg/setting-icon/setting-icon.component";
-import { AtomicComponentComponent } from './atomic-component.component';
+import { AtomicComponentComponent } from "./atomic-component.component";
 
 jss.setup(preset());
 
@@ -33,7 +32,6 @@ const exportItems = [
   ChevronUpIconComponent,
   BreadcrumbsComponent,
   BreadcrumbItemDirective,
-  BreadcrumbListDirective,
   OlComponent,
   NavComponent,
   LiComponent,
@@ -41,7 +39,7 @@ const exportItems = [
   DivComponent,
   SvgComponent,
   SettingIconComponent
-]
+];
 @NgModule({
   declarations: exportItems,
   imports: [CommonModule, FrontalModule],

@@ -1,4 +1,3 @@
-import { isPlatformBrowser } from "@angular/common";
 import {
   Component,
   ContentChild,
@@ -10,35 +9,13 @@ import {
   Inject,
   forwardRef,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   OnInit,
   OnDestroy,
-  Output,
-  EventEmitter,
-  ViewRef,
-  AfterViewInit,
-  PLATFORM_ID,
-  QueryList,
-  ContentChildren,
-  HostListener
+  AfterViewInit
 } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import {
-  fromEvent,
-  Subject,
-  BehaviorSubject,
-  animationFrameScheduler
-} from "rxjs";
-import {
-  takeUntil,
-  tap,
-  scan,
-  withLatestFrom,
-  filter,
-  auditTime,
-  distinctUntilChanged,
-  map
-} from "rxjs/operators";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { fromEvent, Subject, BehaviorSubject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
 
 @Directive({
   selector: "[breadcrumbItem]",
@@ -47,7 +24,7 @@ import {
 export class BreadcrumbItemDirective
   implements OnInit, AfterViewInit, OnDestroy {
   @Input() item: Object = {};
-  @HostBinding("class") className = "toggle-btn toggle-btn-on";
+  @HostBinding("class") className = "";
   private destroy = new Subject<void>();
 
   constructor(
@@ -56,43 +33,13 @@ export class BreadcrumbItemDirective
     private breadcrumbs: BreadcrumbsComponent
   ) {}
 
-  ngOnInit() {
-    console.log("className", this.className, this.breadcrumbs);
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
     fromEvent(this.element.nativeElement, "click")
       .pipe(takeUntil(this.destroy))
       .subscribe(_ => this.breadcrumbs.itemClick(this.item));
   }
-
-  ngOnDestroy() {
-    this.destroy.next();
-    this.destroy.complete();
-  }
-}
-
-@Directive({
-  selector: "[breadcrumbList]",
-  exportAs: "breadcrumbList"
-})
-//  AfterViewInit,
-export class BreadcrumbListDirective implements OnInit, OnDestroy {
-  private destroy = new Subject<void>();
-
-  constructor(
-    private element: ElementRef,
-    @Inject(forwardRef(() => BreadcrumbsComponent))
-    private switcher: BreadcrumbsComponent
-  ) {}
-
-  ngOnInit() {}
-
-  // ngAfterViewInit() {
-  //   fromEvent(this.element.nativeElement, "click")
-  //     .pipe(takeUntil(this.destroy))
-  //     .subscribe(_ => this.switcher.itemClick("hs"));
-  // }
 
   ngOnDestroy() {
     this.destroy.next();
@@ -120,18 +67,11 @@ export const BREADCRUMBS_VALUE_ACCESSOR: any = {
   providers: [BREADCRUMBS_VALUE_ACCESSOR]
 })
 export class BreadcrumbsComponent implements AfterViewInit, OnDestroy {
-  @ContentChild(TemplateRef, {static: false}) template!: TemplateRef<any>;
-  @ContentChild(BreadcrumbListDirective, {static: false})
-  breadcrumbList!: BreadcrumbListDirective;
-  @ContentChild(BreadcrumbItemDirective, {static: false})
-  breadcrumbItemDirective!: BreadcrumbItemDirective;
+  @ContentChild(TemplateRef, { static: false }) template!: TemplateRef<any>;
 
   state = new BehaviorSubject({ selectedItem: {} });
 
-  private _onChange = (value: any) => {};
-
   itemClick(item) {
-    console.log("yeaahaa", item, this.state);
     this.state.next({ selectedItem: item });
   }
 
